@@ -15,7 +15,6 @@ const ItemDetailContainer = () => {
 		<div className="itemContenedor">
 			<div className="itemDetail">
 				<h1>{item.title}</h1>
-				<h3>{item.description}</h3>
 				<img src={item.thumbnail} alt={item.title} />
 				<span>{item.description}</span>
 				<span>{item.category}</span>
