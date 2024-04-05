@@ -1,31 +1,25 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import data from "../data/products.json"
 
 const ItemDetailContainer = () => {
-	const [item, setItem] = useState()
+	const [item, setItem] = useState([])
 	const { id } = useParams()
 
 	useEffect(() => {		
-		setItem(data.find((i) => i.id === Number(id)));
-	}, [id])
-
-
+		setItem(data.find((producto) => producto.id === Number(id)));
+    }, [id])
 
 	return (		
-		<div className="itemListContainer">
-			<h1>Productos</h1>
-			<div>
-				{item.map(producto =>
-					<div key={producto.id}>
-						<h3>{producto.title}</h3>
-						<img src={producto.images[0]} alt={producto.title} />
-						<span>{producto.description}</span>
-						<span>{producto.category}</span>
-						<Link to={`/item/${producto.id}`}> <button>Ir a detalle</button></Link>
-            		</div>
-				)}
+		<div className="itemContenedor">
+			<div className="itemDetail">
+				<h1>{item.title}</h1>
+				<h3>{item.description}</h3>
+				<img src={item.thumbnail} alt={item.title} />
+				<span>{item.description}</span>
+				<span>{item.category}</span>
+				<Link to="/"><button>Home</button></Link>
 			</div>
 		</div>
 	);

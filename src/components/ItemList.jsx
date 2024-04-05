@@ -1,7 +1,9 @@
-import Item from "./Item";
+import Item from './Item'
 
 const ItemList = ({info}) => {
-	return	info.map((producto) => <Item key={producto.id} producto={producto} />)
-};
+    return(
+        info.map((producto, key) => <Item key={key} producto={producto}/>)
+)};
+
 
 export default ItemList;

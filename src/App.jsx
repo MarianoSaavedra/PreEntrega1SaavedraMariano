@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import Error404 from './components/Error404';
 
 function App() {
