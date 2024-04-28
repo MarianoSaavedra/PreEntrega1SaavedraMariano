@@ -27,15 +27,13 @@ const ItemDetailContainer = () => {
 		<div className='itemContenedor'>
 			<div className='itemDetail'>
 				<h1>{item.title}</h1>
+				<span>{item.categoryID}</span>
 				<img src={item.thumbnail} alt={item.title} />
 				<span>{item.description}</span>
-				<span>{item.categoryID}</span>
+
 				<span>PRECIO: ${item.price}</span>
 				<span>STOCK:{item.stock}</span>
 				<ItemCount onAdd={add} stock={item.stock} />
-				<Link to='/'>
-					<button>Home</button>
-				</Link>
 			</div>
 		</div>
 	);

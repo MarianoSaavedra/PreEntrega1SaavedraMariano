@@ -7,18 +7,17 @@ const CartWidget = () => {
 	const { items } = useContext(CartContext);
 
 	const total = items.reduce(
-		(acumulador, valorActual) =>
-			acumulador + valorActual.cantidad * valorActual.price,
+		(acumulador, valorActual) => acumulador + valorActual.cantidad * valorActual.price,
 		0,
 	);
 
 	if (!total) return null;
 	return (
-		<div>
+		<div className='headerCart'>
 			<Link to='/cart'>
 				<img src={cart} alt='Carrito' />
-				<span className='carritoNumber'>
-					{items.length === 0 ? 'No tienes nada' : `$ ${total}`}
+				<span className='headerCartNumber'>
+					{items.length === 0 ? 'No tienes nada' : `$${total}`}
 				</span>
 			</Link>
 		</div>

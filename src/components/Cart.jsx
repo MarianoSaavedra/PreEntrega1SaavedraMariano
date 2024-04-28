@@ -10,7 +10,7 @@ const initialValues = {
 const Cart = () => {
 	const [comprador, setComprador] = useState(initialValues);
 	const [completos, setCamposCompletos] = useState(false);
-	const { items } = useContext(CartContext);
+	const { items, clearCart, removeItem } = useContext(CartContext);
 
 	const handleChange = (evento) => {
 		const { name, value } = evento.target;
@@ -21,9 +21,7 @@ const Cart = () => {
 				[name]: value,
 			};
 		});
-		const completados = Object.values(comprador).every(
-			(field) => field !== '',
-		);
+		const completados = Object.values(comprador).every((field) => field.length > 0);
 		setCamposCompletos(completados);
 	};
 
@@ -50,17 +48,15 @@ const Cart = () => {
 				<ul>
 					{items.map((item) => (
 						<li key={item.id}>
-							<img
-								src={item.thumbnail}
-								alt='{item.title}'
-								height={200}
-								width={200}
-							/>
+							<img src={item.thumbnail} alt='{item.title}' height={200} width={200} />
 							{item.title} - {item.cantidad} - ${item.price}
+							<button onClick={() => removeItem(item.id)}>Quitar Item</button>
 						</li>
 					))}
 				</ul>
 			</div>
+
+			<button onClick={clearCart}>Vaciar Carrito</button>
 
 			<h2>DATOS</h2>
 			<form>
