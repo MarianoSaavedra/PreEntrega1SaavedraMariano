@@ -1,29 +1,49 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+	getFirestore,
+	getDocs,
+	collection,
+	query,
+	where,
+} from 'firebase/firestore';
 
-import data from "../data/products.json";
 import ItemList from './ItemList';
-
 const ItemListContainer = () => {
 	const [info, setInfo] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const { id } = useParams();
-	
-	useEffect(() => {
-		setTimeout(() => {
-			if(id){
-				const filtrarCategoria = data.filter(product => product.category === id)
-				setInfo(filtrarCategoria)			
-			}
-			else{
-				setInfo(data)
-			}
-		}, 2000)
-	}, [id])
 
-	return (		
-		<div className="itemListContainer">
+	useEffect(() => {
+		const db = getFirestore();
+
+		let refCollection;
+
+		if (!id) refCollection = collection(db, 'items');
+		else {
+			refCollection = query(
+				collection(db, 'items'),
+				where('categoryID', '==', id),
+			);
+		}
+
+		getDocs(refCollection)
+			.then((snapshot) => {
+				setInfo(
+					snapshot.docs.map((doc) => {
+						return { id: doc.id, ...doc.data() };
+					}),
+				);
+			})
+			.finally(() => setLoading(false));
+	}, [id]);
+
+	if (loading) return <div>Cargando</div>;
+
+	return (
+		<div className='itemListContainer'>
 			<h1>Productos</h1>
-			<ItemList info={info}/>
+			<ItemList info={info} />
 		</div>
 	);
 };
