@@ -9,6 +9,7 @@ const initialValues = {
 };
 const Cart = () => {
 	const [comprador, setComprador] = useState(initialValues);
+	const [completos, setCamposCompletos] = useState(false);
 	const { items } = useContext(CartContext);
 
 	const handleChange = (evento) => {
@@ -20,6 +21,10 @@ const Cart = () => {
 				[name]: value,
 			};
 		});
+		const completados = Object.values(comprador).every(
+			(field) => field !== '',
+		);
+		setCamposCompletos(completados);
 	};
 
 	const total = items.reduce((acu, act) => acu + act.price * act.cantidad, 0);
@@ -41,13 +46,21 @@ const Cart = () => {
 	return (
 		<>
 			<h1>Pedido</h1>
-			<ul>
-				{items.map((item) => (
-					<li key={item.id}>
-						{item.title} - {item.cantidad} - ${item.price}
-					</li>
-				))}
-			</ul>
+			<div height={400} width={400}>
+				<ul>
+					{items.map((item) => (
+						<li key={item.id}>
+							<img
+								src={item.thumbnail}
+								alt='{item.title}'
+								height={200}
+								width={200}
+							/>
+							{item.title} - {item.cantidad} - ${item.price}
+						</li>
+					))}
+				</ul>
+			</div>
 
 			<h2>DATOS</h2>
 			<form>
@@ -57,6 +70,7 @@ const Cart = () => {
 						type='text'
 						value={comprador.name}
 						name='name'
+						required
 						onChange={handleChange}
 					/>
 				</div>
@@ -66,6 +80,7 @@ const Cart = () => {
 						type='number'
 						value={comprador.phone}
 						name='phone'
+						required
 						onChange={handleChange}
 					/>
 				</div>
@@ -75,13 +90,16 @@ const Cart = () => {
 						type='email'
 						value={comprador.email}
 						name='email'
+						required
 						onChange={handleChange}
 					/>
 				</div>
 			</form>
-			<button type='button' onClick={handleOrder}>
-				Comprar
-			</button>
+			{completos && (
+				<button type='button' onClick={handleOrder}>
+					Comprar
+				</button>
+			)}
 		</>
 	);
 };
