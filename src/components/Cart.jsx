@@ -22,6 +22,7 @@ const Cart = () => {
 			};
 		});
 		const completados = Object.values(comprador).every((field) => field.length > 0);
+
 		setCamposCompletos(completados);
 	};
 
@@ -38,28 +39,30 @@ const Cart = () => {
 			if (id) {
 				alert(`Su orden: ${id} ha sido creada exitosamente `);
 			}
+			clearCart();
+			window.location.assign('/');
 		});
 	};
 
 	return (
-		<>
-			<h1>Pedido</h1>
-			<div height={400} width={400}>
+		<div className='formularioFinal'>
+			<div className='formularioFinalPedido'>
+				<h3>Pedido</h3>
 				<ul>
 					{items.map((item) => (
 						<li key={item.id}>
-							<img src={item.thumbnail} alt='{item.title}' height={200} width={200} />
-							{item.title} - {item.cantidad} - ${item.price}
-							<button onClick={() => removeItem(item.id)}>Quitar Item</button>
+							<div>
+								<img src={item.thumbnail} alt='{item.title}' />
+								{item.title} - {item.cantidad} - ${item.price}
+								<button onClick={() => removeItem(item.id)}>Quitar Item</button>
+							</div>
 						</li>
 					))}
 				</ul>
 			</div>
 
-			<button onClick={clearCart}>Vaciar Carrito</button>
-
-			<h2>DATOS</h2>
-			<form>
+			<form className='formularioFinalDatos'>
+				<h3>Informacion</h3>
 				<div>
 					<label>Nombre</label>
 					<input
@@ -90,13 +93,14 @@ const Cart = () => {
 						onChange={handleChange}
 					/>
 				</div>
+				<button onClick={clearCart}>Vaciar Carrito</button>
+				{completos && (
+					<button type='button' onClick={handleOrder}>
+						Comprar
+					</button>
+				)}
 			</form>
-			{completos && (
-				<button type='button' onClick={handleOrder}>
-					Comprar
-				</button>
-			)}
-		</>
+		</div>
 	);
 };
 

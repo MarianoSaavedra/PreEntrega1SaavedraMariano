@@ -179,3 +179,56 @@
 	padding: 15px;
 	border-radius: 5px;
 }
+
+.formularioFinal {
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	.formularioFinalPedido {
+		width: 60%;
+		> h3 {
+			width: 100%;
+			text-align: center;
+			font-size: 3rem;
+		}
+		> ul {
+			width: 100%;
+			list-style: none;
+			> li {
+				padding: 25px;
+				> div {
+					width: 100%;
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+					> img {
+						width: 75px;
+						height: 75px;
+					}
+				}
+			}
+		}
+	}
+	.formularioFinalDatos {
+		width: 40%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		> h3 {
+			width: 100%;
+			text-align: center;
+			font-size: 3rem;
+		}
+		> div {
+			display: flex;
+			justify-content: space-around;
+			text-align: center;
+			width: 100%;
+			padding: 25px;
+		}
+		> button {
+			width: 40%;
+		}
+	}
+}

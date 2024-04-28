@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getFirestore, getDoc, doc } from 'firebase/firestore';
 
 import { CartContext } from '../contexts/CartContext';
@@ -8,7 +8,7 @@ import ItemCount from './ItemCount';
 const ItemDetailContainer = () => {
 	const [item, setItem] = useState([]);
 	const { id } = useParams();
-	const { items, addItem, clearCart } = useContext(CartContext);
+	const { addItem } = useContext(CartContext);
 
 	useEffect(() => {
 		const db = getFirestore();
