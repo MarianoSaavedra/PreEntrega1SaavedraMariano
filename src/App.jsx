@@ -19,6 +19,7 @@ function App() {
 					<Route path='/category/:useParamsID' element={<ItemListContainer />} />
 
 					<Route path='/item/:id' element={<ItemDetailContainer />} />
+
 					<Route path='/cart' element={<Cart />} />
 
 					<Route path='*' element={<Error404 />} />

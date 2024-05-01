@@ -1,9 +1,7 @@
-import { useContext, useState } from 'react';
-import { CartContext } from '../contexts/CartContext';
+import { useState } from 'react';
 
 const ItemCount = ({ onAdd, stock }) => {
 	const [number, setNumber] = useState(1);
-	const { items, addItem, clearCart } = useContext(CartContext);
 
 	const handleButtonRestar = () => {
 		if (number > 1) {

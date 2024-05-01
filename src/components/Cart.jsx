@@ -65,13 +65,7 @@ const Cart = () => {
 				<h3>Informacion</h3>
 				<div>
 					<label>Nombre</label>
-					<input
-						type='text'
-						value={comprador.name}
-						name='name'
-						required
-						onChange={handleChange}
-					/>
+					<input type='text' value={comprador.name} name='name' onChange={handleChange} />
 				</div>
 				<div>
 					<label>Celular</label>
@@ -79,7 +73,6 @@ const Cart = () => {
 						type='number'
 						value={comprador.phone}
 						name='phone'
-						required
 						onChange={handleChange}
 					/>
 				</div>
@@ -89,7 +82,6 @@ const Cart = () => {
 						type='email'
 						value={comprador.email}
 						name='email'
-						required
 						onChange={handleChange}
 					/>
 				</div>
