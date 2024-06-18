@@ -6,13 +6,12 @@
 }
 
 .spinner {
-	border: 25px solid rgba(0, 0, 0, 0.1);
+	border: 10px solid rgba(0, 0, 0, 0.1);
 	width: 500px;
 	height: 500px;
 	border-radius: 50%;
 	border-left-color: #09f;
-	margin: 0 auto;
-
+	margin: 250px auto;
 	animation: spin 1s ease infinite;
 }
 
@@ -45,12 +44,12 @@
 	}
 	.headerUl {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-between;
 		list-style: none;
 		align-items: center;
 		gap: 25px;
 		> a {
-			font-size: 2.5rem;
+			font-size: 1rem;
 			text-decoration: none;
 			margin: 10px 0 10px 0;
 			background-color: wheat;
@@ -85,29 +84,28 @@
 }
 
 .itemListContainer {
+	width: 75%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	margin: 0 auto;
+	padding: 50px;
+	gap: 20px;
+	justify-content: space-between;
 	align-items: center;
-	gap: 50px;
-	.itemListContainerH1 {
-		width: 100%;
-		font-size: 5rem;
-		text-align: center;
-		margin-bottom: 5%;
-	}
 	.card {
-		width: 280px;
-		height: 400px;
+		width: 30%;
 		border-radius: 25px;
+		padding: 30px;
+		border: 3px solid black;
+		box-shadow: 1px 1px 1px 1px peru;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 5%;
+		gap: 10px;
 		background-color: lightblue;
 		.cardH3 {
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 			font-weight: bolder;
 			text-align: center;
 		}
@@ -122,18 +120,19 @@
 			}
 		}
 		.cardSpan {
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			font-weight: bolder;
 		}
 		.cardButton {
-			font-size: 2rem;
+			font-size: 1.5rem;
+			padding: 10px;
 			border-radius: 5px;
 			background-color: wheat;
 			color: black;
 		}
 		.cardButton:hover {
 			background-color: tomato;
-			zoom: 1.1;
+			font-weight: bolder;
 		}
 	}
 }

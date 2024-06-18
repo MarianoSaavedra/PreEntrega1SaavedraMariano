@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
 	name: '',
@@ -11,6 +12,7 @@ const Cart = () => {
 	const [comprador, setComprador] = useState(initialValues);
 	const [completos, setCamposCompletos] = useState(false);
 	const { items, clearCart, removeItem } = useContext(CartContext);
+	const navigate = useNavigate();
 
 	const handleChange = (evento) => {
 		const { name, value } = evento.target;
@@ -40,7 +42,7 @@ const Cart = () => {
 				alert(`Su orden: ${id} ha sido creada exitosamente `);
 			}
 			clearCart();
-			window.location.assign('/');
+			navigate('/');
 		});
 	};
 

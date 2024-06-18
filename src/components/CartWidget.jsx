@@ -11,14 +11,11 @@ const CartWidget = () => {
 		0,
 	);
 
-	if (!total) return null;
 	return (
 		<div className='headerCart'>
 			<Link to='/cart'>
 				<img src={cart} alt='Carrito' />
-				<span className='headerCartNumber'>
-					{items.length === 0 ? 'No tienes nada' : `$${total}`}
-				</span>
+				<span className='headerCartNumber'>{items.length === 0 ? ' ' : `$${total}`}</span>
 			</Link>
 		</div>
 	);

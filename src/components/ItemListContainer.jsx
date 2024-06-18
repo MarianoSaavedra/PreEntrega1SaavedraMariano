@@ -37,7 +37,6 @@ const ItemListContainer = () => {
 
 	return (
 		<div className='itemListContainer'>
-			<h1 className='itemListContainerH1'>RANDOM STORE</h1>
 			<ItemList dataBase={dataBase} />
 		</div>
 	);

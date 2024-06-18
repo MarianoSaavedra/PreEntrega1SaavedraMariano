@@ -23,6 +23,7 @@ const ItemDetailContainer = () => {
 	const add = (cantidad) => {
 		addItem(item, cantidad);
 	};
+
 	return (
 		<div className='itemContenedor'>
 			<div className='itemDetail'>
